@@ -13,21 +13,60 @@
     margin-left:30%;
 }
 .wrapper {
-    width: 600px;
-    display: grid;
-    grid-gap: 10px;
-    grid-template-columns: repeat(8, 50px);
-    grid-template-rows: repeat(8,50px);
-    grid-auto-flow: column;
+        display: grid;
+        height: 480px;
+        grid-template-columns: repeat(8,60px);
+        grid-gap: 2px;
+        background-color: #fff;
+        color: #444;
+        outline: #000000;
   }
   
   .box {
     background-color: #444;
-    color: #fff;
+    color: #000000;
+    align-content: center;
     border-radius: 1px;
     padding: 10px;
     font-size: 150%;
+    position:relative;
+    width: 60px;
+    height: 60px;
+    max-width: 60px;
+    max-height: 60px;
   }
   body{
-      margin:40px;
+      margin-left:300px;
   }
+  /* .res{
+      align-content: center;
+      width:inherit;
+      height: inherit;
+  } */
+ /*  .box img {
+	margin-left: auto;
+	margin-right: auto;
+    display: block; 
+} */
+.game_box {
+        width: 100px;
+        height: 100px;
+        position: relative;
+        top:0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+    }
+#game_box1{
+    width: 100px;
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-left:371px;
+    margin-top:130px;
+  
+
+}

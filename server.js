@@ -1,17 +1,23 @@
 var express=require('express');
 var ejs=require('ejs');
 var app=express();
+var flash=require('express-flash');
 var route = require('./routes.js');
-var bodyParser=require('body-parser');
-
-
-app.set('view engine','ejs');
-app.use(bodyParser.urlencoded({extended:true}));
-app.use(bodyParser.json());
+var http=require('http').Server(app);
+var io=require('socket.io')(http);
+app.set('view engine',ejs);
+app.use(flash());
 app.use('/',route);
-app.get('/flash',function(res,req){
-    res.redirect('/');
+io.on('connection',function(socket){
+    console.log('Hi niket,user connected');
+    socket.on('chat message',function(msg){
+        console.log('message: '+msg);
+        io.emit('chat message',msg);
+    })
+    socket.on('disconnect',function(){
+        console.log('Bye niket,I am going back');
+    })
 })
-app.listen(8099,()=>{
-    console.log("listening on port 3001")
-});
+http.listen(8090,()=>{
+    console.log("listening on port 8090");
+})

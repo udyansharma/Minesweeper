@@ -1,0 +1,11 @@
+{
+
+    "login_unf":"User not found",
+    "invalid_cred":"Invalid Credentials",
+    "reg_err":"Sorry couldn't register",
+    "user_ver":"Kindly verify",
+    "userver_err":"Sorry couldn't Verify",
+    "email_verified":"Email verified.Please login to continue",
+    "logged_out":"Please login again"
+
+}

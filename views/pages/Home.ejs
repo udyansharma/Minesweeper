@@ -1,17 +1,25 @@
 <!DOCTYPE html>
 <html>
-    <head>
-            <link rel="stylesheet" type="text/css" href="CSS/custom.css"/>
-    </head>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="CSS/custom.css" />
+</head>
+
 <body>
-    <header><h1>Welcome to Minesweeper</h1></header>
+    <header>
+        <h1>Welcome to Minesweeper</h1>
+    </header>
+    <% include ../partials/welcome-header.ejs%>
+    
     <script type="text/javascript" src="JS/handler.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <form action="/start">
-    <input type="submit" value="Start Game">
-</form>
+    <div class="game_box">
+        <form action="/start">
+            <input type="submit" value="Start Game">
+        </form>
+    </div>
 </body>
 
 </html>

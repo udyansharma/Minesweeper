@@ -1,27 +1,59 @@
 <!DOCTYPE html>
 <html>
-    <head>
-            <link rel="stylesheet" type="text/css" href="CSS/custom.css"/>
-    </head>
-<body onload="startGame()">
 
-    <header><h1>Welcome to Minesweeper</h1></header>
+<head>
+    <link rel="stylesheet" type="text/css" href="CSS/custom.css" />
+</head>
+
+<body >
+    <header>
+        <h1>Welcome to Minesweeper</h1>
+    </header>
+
+    <% include ../partials/welcome-header.ejs%>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
     <script type="text/javascript" src="JS/handler.js"></script>
-    <div id="time"></div><div id="score" style="display:block"></div>
+    <div id="game_box1">
+        <div id="im"></div>
+    <div id="time"></div>
+    <div><b>Flag:</b><span id="flag">0</span>/10</div>
     <div class='wrapper'>
-    <% for(var i=1;i<=8;i++){
+        <% for(var i=1;i<=8;i++){
         for(var j=1;j<=8;j++){
         %>
-        <div class='box' id='button<%=i%><%=j%>'>
-            <div id='res<%=i%><%=j%>' style="height:100%;width:100%;display:block;" onclick='changeState(this)'>
-            </div>
+        <div class='box' id='button<%=i%><%=j%>' style="display:inline-block;" oncontextmenu="handlingRight(event)" onclick='changeState(event)'>
         </div>
-      <%}%>
-    <%} %>
+        <%}%>
+        <%} %>
+    </div>
 </div>
-
+<!-- <div class="high_score">
+    <ul id="top_3"></ul>
+</div> -->
+<div class="chat_box">
+<ul id="messages"></ul>
+    <form action="">
+        <input id="m" autocomplete="off"/>
+        <button>Send</button>
+        </form>
+</div>
 </body>
 <script>
-        newGame()
+    $(function () {
+    var socket = io();
+    $('form').submit(function(){
+      socket.emit('chat message', $('#m').val());
+      $('#m').val('');
+      return false;
+    });
+    socket.on('chat message',function(msg){
+        console.log("Receiving this here",msg);
+      $('#messages').append($('<li>').text(msg));
+    })
+  });
+    newGame()
+startGame()
 </script>
+
 </html>

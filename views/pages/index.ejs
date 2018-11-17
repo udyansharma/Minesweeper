@@ -1,0 +1,34 @@
+<html>
+    <head>
+            <link rel="stylesheet" type="text/css" href="/CSS/login.css">
+    </head>
+<body>
+<div class="login-page">
+  <h2><%= locals.messages.message %></h2>
+    <div class="form">
+      <form class="register-form" id="register-form" style="display:none" action="/register_user" method="post" enctype="multipart/form-data">
+        <input type="text" class="inp" placeholder="username" name="username" required/>
+        <input type="email" class="inp" placeholder="email address" name="email" required/>
+        <input type="password" class="inp" placeholder="password" name="pass" required>
+        <input type="password" class="inp" placeholder="confirm password" required/>
+        <input type="file" class="inp" placeholder="avatar" name="pic" required/>
+        <input type="submit" class="btn" value="create account"/>
+        <p class="message">Already registered? <a href="" onclick="(function(){
+          document.getElementById('register-form').style.display='none';
+           document.getElementById('login-form').style.display='block';
+        })();">Sign In</a></p>
+      </form>
+      <form class="login-form" id="login-form" style="display: block" action="/login_user" method="post">
+        <input type="text" class="inp" placeholder="username" name="name" required/>
+        <input type="password" class="inp" placeholder="password" name="pass" required/>
+        <input type="submit"  class="btn" value="login">
+        <p class="message">Not registered? <a href="" onclick="(function(){
+          document.getElementById('login-form').style.display='none';
+          document.getElementById('register-form').style.display='block';
+        })();return false;">Create an account</a></p>
+      </form>
+    </div>
+  </div>
+  <script src="/JS/temp.js"></script>
+</body>
+</html>
