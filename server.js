@@ -9,13 +9,12 @@ app.set('view engine',ejs);
 app.use(flash());
 app.use('/',route);
 io.on('connection',function(socket){
-    console.log('Hi niket,user connected');
     socket.on('chat message',function(msg){
         console.log('message: '+msg);
         io.emit('chat message',msg);
     })
     socket.on('disconnect',function(){
-        console.log('Bye niket,I am going back');
+        console.log('Bye server,I am going back');
     })
 })
 http.listen(8090,()=>{

@@ -4,26 +4,7 @@ var DBLogic = require('./controller/DBLogic.js');
 var body_parser = require('body-parser');
 var session = require('express-session');
 var json = require('./error.json');
-var multer = require('multer');/* 
-var io = require('socket.io')(http); */
-// var fs = require('fs');
-/* io.on('connection',function(socket){
-    console.log('Hi niket,user connected');
-    socket.on('chat message',function(msg){
-        console.log('message: '+msg);
-        io.emit('chat message',msg);
-    })
-    socket.on('disconnect',function(){
-        console.log('Bye niket,I am going back');
-    })
-}) */
-/* io.on('connection',function(socket){
-    socket.on('chat message',function(user,score){
-        DBLogic.top3(user,score).then(pm=>{
-            io.emit('chat message',pm);
-        });
-    })
-}) */
+var multer = require('multer');
 var upload = multer({
     dest: 'uploads/'
 });
@@ -44,7 +25,6 @@ app.use((req, res, next) => {
     next();
 });
 app.get('/', (req, res) => {
-    console.log("Mai pher aa gaya itthe.");
     return res.render('pages/index.ejs');
 });
 app.post('/login_user', (req, res) => {
